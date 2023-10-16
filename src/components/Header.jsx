@@ -109,7 +109,9 @@ export default function Header() {
               <div className=" flex items-center">
                 <div className="pr-[27px]">
                   <div className="text-white text-lg">{getRole()}</div>
-                  <div className="text-[#E9E9E9] text-sm">{user.email}</div>
+                  <div className="text-[#E9E9E9] text-sm">
+                    {user.role ==='operator' ? `${user.surname || ''} ${user.name || ''}` : user.email }
+                  </div>
                 </div>
                 <button className="pr-4" onClick={handleLogOut}>
                   <img
