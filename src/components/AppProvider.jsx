@@ -78,6 +78,7 @@ export const AppProvider = ({ children }) => {
               fetchLocations();
               if(Object.values(locationLocalStorage).length > 0) {
                 setLocation(locationLocalStorage) 
+                navigate("/operator");
               } else {
                  navigate("/changeLocation");
               }
