@@ -28,9 +28,6 @@ export const getDate = (date: string) => {
 function App() {
   const { user, userRole, location } = useContext(AppContext);
 
-  console.log(user);
-
-
   return (
     <>  
         <Header />

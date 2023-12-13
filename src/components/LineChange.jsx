@@ -2,10 +2,7 @@ import { useState, useEffect } from 'react';
 
 export const LineChange = ({ data }) => {
    const [currentFuel, setCurrentFuel] = useState(null);
-   console.log(data);
-
-   console.log(currentFuel);
-
+   
    useEffect(() => {
       const findedValue = Object.entries(data.oldData).filter((el) => el[1] !== Object.entries(data.newData).find(e => e[0] === el[0])[1]);
       
