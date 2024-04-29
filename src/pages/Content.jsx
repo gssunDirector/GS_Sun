@@ -9,6 +9,7 @@ import { LinePromotion } from "../components/LinePromotion";
 import { getDate } from "date-fns";
 import { doc, onSnapshot } from "firebase/firestore";
 import { db } from "../firebase";
+import Editor from "../components/Editor";
 
 export default function Content() {
   const [prices, setPrices] = useState({});
@@ -88,6 +89,7 @@ export default function Content() {
         </button>
       </div>
         </div>
+
         <div className="py-[24px] border-b-2  border-l-2 border-r-2 border-['#E9E9E9'] rounded-b-[4px] bg-[#FAFAFA] flex flex-col gap-[24px]">
            {promotions.sort((a, b) => {
          
@@ -224,6 +226,7 @@ export default function Content() {
       
       <ModalAddPromotion
         isOpen={isModalOpen}
+        openModal={openModal}
         closeModal={closeModal}
       />
     </div>
