@@ -68,10 +68,10 @@ export const LineTransaction = ({ data, isRequest }) => {
 
   return (
     <div className="w-full h-max flex flex-row items-center justify-between border-b border-['#E9E9E9'] py-[8px]">
-      <div className="w-1/6 pl-6 pr-6">
+      <div className="flex-1 pl-6 pr-6 min-w-[120px]">
         <span>{format(new Date(data.requestDate), 'HH:mm:ss dd.MM.yyyy')}</span>
       </div>
-      <div className="w-1/6">
+      <div className="flex-1">
         <div>
           <span
           className={`rounded-lg pl-[6px] pr-[6px] pt-[4px] pb-[4px] text-sm ${typeStyles}`} 
@@ -80,19 +80,25 @@ export const LineTransaction = ({ data, isRequest }) => {
         </span>
         </div>
       </div>
-      <div className="w-1/6 overflow-hidden pl-6 pr-6 text-ellipsis">
+      <div className="flex-1 overflow-hidden pl-6 pr-6 text-ellipsis min-w-[100px]">
         <span className=' whitespace-nowrap '>{isRequest ? '' : data.location}</span>
       </div>
-      <div className="w-1/6">
+      <div className="flex-1 min-w-[100px]">
         <span>{isRequest ? '' : `${getProductName()[0]} ${getProductName()[1] || ''}`}</span>
       </div>
-      <div className="w-1/6">
-        <span>{isRequest ? '' : `${data.sum} грн`}</span>
+      <div className="flex-1 min-w-[80px]">
+        <span>{isRequest ? '' : `${(+data.sum || 0).toFixed(2)} грн`}</span>
       </div>
-      <div className="w-1/6">
+      <div className="flex-1 min-w-[80px]">
+        <span>{isRequest ? '' : `${(+data.additionalPayment || 0).toFixed(2)} грн`}</span>
+      </div>
+      <div className="flex-1 min-w-[80px]">
+        <span>{isRequest ? '' : `${(+data.total || +data.sum || 0).toFixed(2)} грн`}</span>
+      </div>
+      <div className="flex-1 min-w-[80px]">
         <span>{isRequest ? '' : data.litrs && `${data.litrs} л`}</span>
       </div>
-      <div className="w-1/6 pl-6 pr-6">
+      <div className="flex-1 pl-6 pr-6 min-w-[100px]">
         <div>
           {isRequest && data.url?.length > 0
             ? <a 
