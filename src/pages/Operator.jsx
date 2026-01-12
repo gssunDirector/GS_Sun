@@ -87,7 +87,7 @@ export default function Operator() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             onKeyDown={(e) => handleKeyDown(e)}
-            disabled
+    
             className="w-full h-[29px] py-[5.5px] pl-2 pr-2 text-gray-700 focus:outline-none focus:shadow-outline border border-['#FFFFFF'] rounded-l-[3px] text-sm"
           />
           <button 
