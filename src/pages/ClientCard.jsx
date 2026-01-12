@@ -67,6 +67,7 @@ export const ClientCard = ({ isOperator }) => {
   }, [client]);
 
   const openModal = () => {
+    setIsModalOperatorOpen(false); // Закрываем модальное окно оператора, если оно было открыто
     setIsModalOpen(true);
   };     
 
@@ -75,6 +76,7 @@ export const ClientCard = ({ isOperator }) => {
   };
 
   const openModalOperator = () => {
+    setIsModalOpen(false); // Закрываем модальное окно бухгалтера, если оно было открыто
     setIsModalOperatorOpen(true);
   };     
 
@@ -426,17 +428,23 @@ export const ClientCard = ({ isOperator }) => {
       )}
    
    
-      <ModalMoneyTransfer
-        isOpen={isModalOpen}
-        closeModal={closeModal}
-        client={client}
-      />
+      {/* Модальное окно зачисления средств - только для бухгалтера */}
+      {!isOperator && (
+        <ModalMoneyTransfer
+          isOpen={isModalOpen}
+          closeModal={closeModal}
+          client={client}
+        />
+      )}
 
-      <ModalMoneyWriteOff
-        isOpen={isModalOperatorOpen}
-        closeModal={closeModalOperator}
-        client={client}
-      />
+      {/* Модальное окно списания средств - только для оператора */}
+      {isOperator && (
+        <ModalMoneyWriteOff
+          isOpen={isModalOperatorOpen}
+          closeModal={closeModalOperator}
+          client={client}
+        />
+      )}
     </div>
   );
 };
