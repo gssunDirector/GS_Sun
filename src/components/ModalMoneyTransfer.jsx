@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import Modal from "react-modal";
 import { BigButton } from "./BigButton";
 
@@ -13,6 +13,13 @@ export const ModalMoneyTransfer = ({ isOpen, closeModal, client, isGeneralPage, 
     const [sum, setSum] = useState(0);
 
     const { user } = useContext(AppContext);
+
+    // Сброс состояния модального окна при закрытии
+    useEffect(() => {
+      if (!isOpen) {
+        setSum(0);
+      }
+    }, [isOpen]);
 
     const handleChange = (e) => {
       setSum(+e.target.value);
@@ -97,7 +104,7 @@ export const ModalMoneyTransfer = ({ isOpen, closeModal, client, isGeneralPage, 
             </div>
           </label>
           {isGeneralPage && (
-            <div cclassName="w-[300px] h-[200px]"> 
+            <div className="w-[300px] h-[200px]"> 
               <embed id="myimg" alt="receipt"  src={data?.url} className='object-cover w-[300px] h-[200px]' />
             </div>
             
