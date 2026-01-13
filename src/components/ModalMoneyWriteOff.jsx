@@ -170,9 +170,7 @@ export const ModalMoneyWriteOff = ({ isOpen, closeModal, client }) => {
         remainingAmount = sum; // Вся сумма недостающая, оплачивается наличными
         // Баланс не обновляется, остается как есть (0 или отрицательный)
         toast.error(
-          `На балансі немає коштів! Доплата: ${remainingAmount.toFixed(
-            2
-          )} грн`,
+          `На балансі немає коштів! Доплата: ${remainingAmount.toFixed(2)} грн`,
           { autoClose: 7000 } // 7 секунд вместо стандартных 5
         );
       } else {
