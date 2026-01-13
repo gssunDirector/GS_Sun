@@ -17,7 +17,7 @@ export const TransactionTableHeader = () => {
         <span className=" font-bold text-[#727272]">Баланс</span>
       </div>
       <div className="flex-1 min-w-[80px]">
-        <span className=" font-bold text-[#727272]">Готівка</span>
+        <span className=" font-bold text-[#727272]">Доплата</span>
       </div>
       <div className="flex-1 min-w-[80px]">
         <span className=" font-bold text-[#727272]">Всього</span>
