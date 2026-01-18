@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "azs-project-55e79",
     "public": "build",
     "ignore": [
       "firebase.json",
