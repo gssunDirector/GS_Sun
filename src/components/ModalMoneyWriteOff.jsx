@@ -60,15 +60,38 @@ export const ModalMoneyWriteOff = ({ isOpen, closeModal, client }) => {
     return () => clearTimeout(timer);
   }, [sum, client]);
 
+  // Обработчик изменения суммы
+  // Обрабатывает пустые значения и предотвращает конкатенацию с нулем
   const handleChange = (e) => {
-    setSum(+e.target.value === "-" ? 0 : +e.target.value);
+    const value = e.target.value;
+    // Если поле пустое, устанавливаем 0
+    if (value === "" || value === "-") {
+      setSum(0);
+    } else {
+      // Преобразуем в число, убирая ведущие нули
+      const numValue = parseFloat(value);
+      setSum(isNaN(numValue) ? 0 : numValue);
+    }
   };
 
+  // Обработчик изменения количества литров
+  // Обрабатывает пустые значения и предотвращает конкатенацию с нулем
   const handleChangeLitrs = (e) => {
-    setInfo({
-      ...info,
-      litrs: +e.target.value === "-" ? "0" : +e.target.value,
-    });
+    const value = e.target.value;
+    // Если поле пустое, устанавливаем 0
+    if (value === "" || value === "-") {
+      setInfo({
+        ...info,
+        litrs: 0,
+      });
+    } else {
+      // Преобразуем в число, убирая ведущие нули
+      const numValue = parseFloat(value);
+      setInfo({
+        ...info,
+        litrs: isNaN(numValue) ? 0 : numValue,
+      });
+    }
   };
 
   useEffect(() => {
@@ -302,7 +325,7 @@ export const ModalMoneyWriteOff = ({ isOpen, closeModal, client }) => {
                     type="number"
                     step="0.01"
                     className="w-full h-[36px] rounded border-[#E9E9E9] border pl-3 mt-2"
-                    value={info.litrs}
+                    value={info.litrs === 0 ? "" : info.litrs}
                     onChange={(e) => handleChangeLitrs(e)}
                     disabled={info.fuelType.length === 0}
                     min="0"
@@ -323,7 +346,7 @@ export const ModalMoneyWriteOff = ({ isOpen, closeModal, client }) => {
                     type="number"
                     step="0.01"
                     className="w-full h-[36px] rounded border-[#E9E9E9] border pl-3 mt-2"
-                    value={sum}
+                    value={sum === 0 ? "" : sum}
                     onChange={(e) => handleChange(e)}
                     disabled={info.fuelType.length === 0}
                     min="0"
